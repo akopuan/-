@@ -1,0 +1,447 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        /* Стили для шапки и навигационного меню */
+        header {
+            background-color:#FF008C ;
+            color:#D80899  ;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Стили для логотипа */
+        .logo {
+            display: block;
+            margin: 20px auto;
+            width: 150px; /* Размер логотипа */
+        }
+        p{
+            font-size:40px;
+        }
+        h2{
+            text-align: center;
+            color: black;
+        }
+        .card {
+  width: 225px;
+  min-height: 350px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Размещаем элементы в колонку */
+  border-radius: 4px;
+  transition: 0.2s;
+  position: relative;
+}
+
+/* При наведении на карточку - меняем цвет тени */
+.card:hover {
+  box-shadow: 4px 8px 16px rgba(255, 102, 51, 0.2);
+}
+
+.card__top {
+  flex: 0 0 220px; /* Задаем высоту 220px, запрещаем расширение и сужение по высоте */
+  position: relative;
+  overflow: hidden; /* Скрываем, что выходит за пределы */
+}
+
+/* Контейнер для картинки */
+.card__image {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card__image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Встраиваем картинку в контейнер card__image */
+  transition: 0.2s;
+}
+
+/* При наведении - увеличиваем картинку */
+.card__image:hover > img {
+  transform: scale(1.1);
+}
+
+/* Размещаем скидку на товар относительно изображения */
+.card__label {
+  padding: 4px 8px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: #ff6633;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+}
+
+.card__bottom {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto; /* Занимаем всю оставшуюся высоту карточки */
+  padding: 10px;
+}
+
+.card__prices {
+  display: flex;
+  margin-bottom: 10px;
+  flex: 0 0 50%; /* Размещаем цены равномерно в две колонки */
+}
+
+.card__price::after {
+  content: "";
+  margin-left: 4px;
+  position: relative;
+}
+
+.card__price1--discount {
+  font-weight: 700;
+  font-size: 19px;
+  color: #414141;
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+.card__price1--discount::before {
+  content: "";
+  font-weight: 400;
+  font-size: 13px;
+  color: #bfbfbf;
+}
+
+.card__price1--common {
+  font-weight: 400;
+  font-size: 17px;
+  color: #606060;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: flex-end;
+}
+
+.card__price1--common::before {
+  content: "";
+  font-weight: 400;
+  font-size: 13px;
+  color: #bfbfbf;
+}
+
+.card__title {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 150%;
+  color: #414141;
+}
+
+.card__title:hover {
+  color: #ff6633;
+}
+
+.card__add {
+  display: block;
+  width: 100%;
+  font-weight: 400;
+  font-size: 17px;
+  color: #70c05b;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #70c05b;
+  border-radius: 4px;
+  cursor: pointer; /* Меняем курсор при наведении */
+  transition: 0.2s;
+  margin-top: auto; /* Прижимаем кнопку к низу карточки */
+}
+
+.card__add:hover {
+  border: 1px solid #ff6633;
+  background-color: #ff6633;
+  color: #fff;
+}
+.cards {
+  display: grid;
+  /* Автоматически заполняем на всю ширину grid-контейнера */
+  grid-template-columns: repeat(auto-fill, 225px);
+  width: 100%;
+  max-width: 1000px; /* Ширина grid-контейнера */
+  justify-content: center;
+  justify-items: center; /* Размещаем карточку по центру */
+  column-gap: 30px; /* Отступ между колонками */
+  row-gap: 40px; /* Отступ между рядами */
+  margin: 0 auto;
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2> Каталог товаров</h2>
+
+        <img src="  https://clipart-library.com/image_gallery/n1356122.png" alt="  Клубок " class="logo">
+        
+    </header>
+
+<!-- Сетка карточек товаров -->
+<div class="cards">
+ <div class="card">
+  <!-- Верхняя часть -->
+  <div class="card__top">
+    <!-- Изображение-ссылка товара -->
+    <a href="https://sun9-71.userapi.com/impf/WlNFDSqI8oj1vPmRDbpl-dzL1kurWz6X42FDBA/bTukYpG6cqI.jpg?size=917x1280&quality=96&sign=f7db38bc44adcb352aea92929b16016d&type=album" class="card__image">
+      <img
+        src="https://sun9-71.userapi.com/impf/WlNFDSqI8oj1vPmRDbpl-dzL1kurWz6X42FDBA/bTukYpG6cqI.jpg?size=917x1280&quality=96&sign=f7db38bc44adcb352aea92929b16016d&type=album"
+        alt="Шапка-ушанка Зима"
+      />
+    </a>
+  </div>
+  <!-- Нижняя часть -->
+  <div class="card__bottom">
+    <!-- Цены на товар (с учетом скидки и без)-->
+    <div class="card__prices">
+      <div class="card__price card__price1--discount"></div>
+      <div class="card__price card__price1--common">1700р</div>
+    </div>
+    <!-- Ссылка-название товара -->
+    <a href="#" class="card__title">
+      Шапка-ушанка "Зима"
+    </a>
+    <!-- Кнопка добавить в корзину -->
+    <button class="card__add">В корзину</button>
+  </div>
+</div>
+  <div class="card">
+   <div class="card">
+  <!-- Верхняя часть -->
+  <div class="card__top">
+    <!-- Изображение-ссылка товара -->
+    <a href="https://sun9-34.userapi.com/impf/9vcp4XYIfPP6dZvggoHgxTzAaJ9HBukFpc2IbQ/NRnLgrf7glU.jpg?size=756x1280&quality=96&sign=8541967bab86b80f1997317dc90d85cc&type=album" class="card__image">
+      <img
+        src="https://sun9-34.userapi.com/impf/9vcp4XYIfPP6dZvggoHgxTzAaJ9HBukFpc2IbQ/NRnLgrf7glU.jpg?size=756x1280&quality=96&sign=8541967bab86b80f1997317dc90d85cc&type=album"
+        alt="Сумка Летняя"
+      />
+    </a>
+  </div>
+  <!-- Нижняя часть -->
+  <div class="card__bottom">
+    <!-- Цены на товар (с учетом скидки и без)-->
+    <div class="card__prices">
+      <div class="card__price card__price1--discount"></div>
+      <div class="card__price card__price1--common">1500р</div>
+    </div>
+    <!-- Ссылка-название товара -->
+    <a href="#" class="card__title">
+     Сумка "Летняя"
+    </a>
+    <!-- Кнопка добавить в корзину -->
+    <button class="card__add">В корзину</button>
+  </div>
+</div>
+  </div>
+  <div class="card">
+ <div class="card">
+  <!-- Верхняя часть -->
+  <div class="card__top">
+    <!-- Изображение-ссылка товара -->
+    <a href="https://sun9-45.userapi.com/impf/XroJQx7LCUm_lewnmiknSUz-2Pf5XmLsQy6YQA/tYi2-jRo25o.jpg?size=960x1280&quality=96&sign=ccfb390882fd40ae5ff30d74e20026d1&type=album" class="card__image">
+      <img
+        src="https://sun9-45.userapi.com/impf/XroJQx7LCUm_lewnmiknSUz-2Pf5XmLsQy6YQA/tYi2-jRo25o.jpg?size=960x1280&quality=96&sign=ccfb390882fd40ae5ff30d74e20026d1&type=album"
+        alt="Корзинка Пасхальная"
+      />
+    </a>
+  </div>
+  <!-- Нижняя часть -->
+  <div class="card__bottom">
+    <!-- Цены на товар (с учетом скидки и без)-->
+    <div class="card__prices">
+      <div class="card__price card__price1--discount"></div>
+      <div class="card__price card__price1--common">900р</div>
+    </div>
+    <!-- Ссылка-название товара -->
+    <a href="#" class="card__title">
+     Корзинка Пасхальна
+    </a>
+    <!-- Кнопка добавить в корзину -->
+    <button class="card__add">В корзину</button>
+  </div>
+</div>
+  </div>
+  <div class="card">
+   <div class="card">
+  <!-- Верхняя часть -->
+  <div class="card__top">
+    <!-- Изображение-ссылка товара -->
+    <a href="https://sun9-66.userapi.com/impf/elyEpkhxjn9A7HZostbHwgncCp7f80gmF3fkLw/wFSGfxxEeG4.jpg?size=510x781&quality=95&sign=32e834cb05780ce184224101e782d16f&c_uniq_tag=8EBDU3teYfVBq1DaALBXbuBTfYdbVrD__1Ia1h6BiZ0&type=album" class="card__image">
+      <img
+        src="https://sun9-66.userapi.com/impf/elyEpkhxjn9A7HZostbHwgncCp7f80gmF3fkLw/wFSGfxxEeG4.jpg?size=510x781&quality=95&sign=32e834cb05780ce184224101e782d16f&c_uniq_tag=8EBDU3teYfVBq1DaALBXbuBTfYdbVrD__1Ia1h6BiZ0&type=album"
+        alt="Платок для храма"
+      />
+    </a>
+  </div>
+  <!-- Нижняя часть -->
+  <div class="card__bottom">
+    <!-- Цены на товар (с учетом скидки и без)-->
+    <div class="card__prices">
+      <div class="card__price card__price1--discount"></div>
+      <div class="card__price card__price1--common">2300р</div>
+    </div>
+    <!-- Ссылка-название товара -->
+    <a href="#" class="card__title">
+     Платок для храма
+    </a>
+    <!-- Кнопка добавить в корзину -->
+    <button class="card__add">В корзину</button>
+  </div>
+</div>
+  </div>
+  <div class="card">
+     <div class="card">
+  <!-- Верхняя часть -->
+  <div class="card__top">
+    <!-- Изображение-ссылка товара -->
+    <a href="https://sun9-5.userapi.com/impf/nHrxFi8qApuQCrjiTKw07cKsSqMBOMg6oLJIuA/0bRXSaKjJ9Q.jpg?size=510x710&quality=95&sign=d4f4373a11bb2e47b94d42dae3930b50&c_uniq_tag=Iy1MCeUilwcXlcmXP_m38PDuFsLIC9vGoHRNuqp-d94&type=album" class="card__image">
+      <img
+        src="https://sun9-5.userapi.com/impf/nHrxFi8qApuQCrjiTKw07cKsSqMBOMg6oLJIuA/0bRXSaKjJ9Q.jpg?size=510x710&quality=95&sign=d4f4373a11bb2e47b94d42dae3930b50&c_uniq_tag=Iy1MCeUilwcXlcmXP_m38PDuFsLIC9vGoHRNuqp-d94&type=album"
+        alt="Тапочки ручной работы"
+      />
+    </a>
+  </div>
+  <!-- Нижняя часть -->
+  <div class="card__bottom">
+    <!-- Цены на товар (с учетом скидки и без)-->
+    <div class="card__prices">
+      <div class="card__price card__price1--discount"></div>
+      <div class="card__price card__price1--common">850р</div>
+    </div>
+    <!-- Ссылка-название товара -->
+    <a href="" class="card__title">
+     Тапочки ручной работы
+    </a>
+    <!-- Кнопка добавить в корзину -->
+    <button class="card__add">В корзину</button>
+  </div>
+</div>
+  </div>
+  <div class="card">
+   <div class="card">
+  <!-- Верхняя часть -->
+  <div class="card__top">
+    <!-- Изображение-ссылка товара -->
+    <a href="https://sun9-44.userapi.com/impf/J9Md-PlCE69QrbxFwlyxzzRCcbjQN2ZP0aIFrA/5ABP62r8zjA.jpg?size=510x680&quality=95&sign=cd96a61968424dbf2b3fbe4787d5053e&c_uniq_tag=eWxiww6RxbVZ2iYhlpS7qAM6kupG23uCqY93Xg9gsJA&type=album" class="card__image">
+      <img
+        src="https://sun9-44.userapi.com/impf/J9Md-PlCE69QrbxFwlyxzzRCcbjQN2ZP0aIFrA/5ABP62r8zjA.jpg?size=510x680&quality=95&sign=cd96a61968424dbf2b3fbe4787d5053e&c_uniq_tag=eWxiww6RxbVZ2iYhlpS7qAM6kupG23uCqY93Xg9gsJA&type=album"
+        alt="Apple IPhone 14 PRO Max Gold"
+      />
+    </a>
+    <!-- Скидка на товар -->
+    
+  </div>
+  <!-- Нижняя часть -->
+  <div class="card__bottom">
+    <!-- Цены на товар (с учетом скидки и без)-->
+    <div class="card__prices">
+      <div class="card__price card__price1--discount"></div>
+      <div class="card__price card__price1--common">2300р</div>
+    </div>
+    <!-- Ссылка-название товара -->
+    <a href="#" class="card__title">
+   Бактузы
+    </a>
+    <!-- Кнопка добавить в корзину -->
+    <button class="card__add">В корзину</button>
+  </div>
+</div>
+  </div>
+  <div class="card">
+   <div class="card">
+  <!-- Верхняя часть -->
+  <div class="card__top">
+    <!-- Изображение-ссылка товара -->
+    <a href="https://sun9-26.userapi.com/impf/Ho50Uq7CSB40YDlpMBMvYsw42b3vOAMZhd5Z6g/JIrULyflSLI.jpg?size=510x510&quality=95&sign=04d5bcd496872d5002be21e9651a9465&c_uniq_tag=Ij9Iho6_PhU_kOSvv_za0iKDOiv4UQOWAkZW0wA9ENE&type=album" class="card__image">
+      <img
+        src="https://sun9-26.userapi.com/impf/Ho50Uq7CSB40YDlpMBMvYsw42b3vOAMZhd5Z6g/JIrULyflSLI.jpg?size=510x510&quality=95&sign=04d5bcd496872d5002be21e9651a9465&c_uniq_tag=Ij9Iho6_PhU_kOSvv_za0iKDOiv4UQOWAkZW0wA9ENE&type=albumg"
+        alt="Apple IPhone 14 PRO Max Gold"
+      />
+    </a>
+    <!-- Скидка на товар -->
+    
+  </div>
+  <!-- Нижняя часть -->
+  <div class="card__bottom">
+    <!-- Цены на товар (с учетом скидки и без)-->
+    <div class="card__prices">
+      <div class="card__price card__price1--discount"></div>
+      <div class="card__price card__price1--common">2800р</div>
+    </div>
+    <!-- Ссылка-название товара -->
+    <a href="#" class="card__title">
+      Шали ручной работы
+    </a>
+    <!-- Кнопка добавить в корзину -->
+    <button class="card__add">В корзину</button>
+  </div>
+</div>
+  </div>
+  <div class="card">
+    <div class="card">
+  <!-- Верхняя часть -->
+  <div class="card__top">
+    <!-- Изображение-ссылка товара -->
+    <a href="https://sun9-75.userapi.com/impf/TMj-sf8zxLK2Yt6BPyBaN-kmPTYfMPeEmTh4RQ/Kmgjc1lOZXI.jpg?size=510x531&quality=95&sign=02dc2f18b6cfe41db5c24c331407e47b&c_uniq_tag=fz08UC0C-tIzaq3uKudh7DAeul_wg-FGuNofTK0qNM8&type=album" class="card__image">
+      <img
+        src="https://sun9-75.userapi.com/impf/TMj-sf8zxLK2Yt6BPyBaN-kmPTYfMPeEmTh4RQ/Kmgjc1lOZXI.jpg?size=510x531&quality=95&sign=02dc2f18b6cfe41db5c24c331407e47b&c_uniq_tag=fz08UC0C-tIzaq3uKudh7DAeul_wg-FGuNofTK0qNM8&type=album"
+        alt="Тапочки с помпоном"
+      />
+    </a>
+    <!-- Скидка на товар -->
+   
+  </div>
+  <!-- Нижняя часть -->
+  <div class="card__bottom">
+    <!-- Цены на товар (с учетом скидки и без)-->
+    <div class="card__prices">
+      <div class="card__price card__price1--discount"></div>
+      <div class="card__price card__price--common">1200р</div>
+    </div>
+    <!-- Ссылка-название товара -->
+    <a href="#" class="card__title">
+      Тапочки с помпоном
+    </a>
+    <!-- Кнопка добавить в корзину -->
+    <button class="card__add">В корзину</button>
+  </div>
+</div>
+  </div>
+</div>
+    </body>
+</html>

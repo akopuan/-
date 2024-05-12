@@ -1,0 +1,240 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        /* Стили для шапки и навигационного меню */
+        header {
+            background-color:#FF008C ;
+            color:#D80899  ;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Стили для логотипа */
+        .logo {
+            display: block;
+            margin: 20px auto;
+            width: 150px; /* Размер логотипа */
+        }
+        p{
+            font-size:40px;
+        }
+        h2{
+            text-align: center;
+            color: black;
+        }
+        .card {
+  width: 225px;
+  min-height: 350px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Размещаем элементы в колонку */
+  border-radius: 4px;
+  transition: 0.2s;
+  position: relative;
+}
+
+/* При наведении на карточку - меняем цвет тени */
+.card:hover {
+  box-shadow: 4px 8px 16px rgba(255, 102, 51, 0.2);
+}
+
+.card__top {
+  flex: 0 0 220px; /* Задаем высоту 220px, запрещаем расширение и сужение по высоте */
+  position: relative;
+  overflow: hidden; /* Скрываем, что выходит за пределы */
+}
+
+/* Контейнер для картинки */
+.card__image {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card__image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Встраиваем картинку в контейнер card__image */
+  transition: 0.2s;
+}
+
+/* При наведении - увеличиваем картинку */
+.card__image:hover > img {
+  transform: scale(1.1);
+}
+
+/* Размещаем скидку на товар относительно изображения */
+.card__label {
+  padding: 4px 8px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: #ff6633;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+}
+
+.card__bottom {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto; /* Занимаем всю оставшуюся высоту карточки */
+  padding: 10px;
+}
+
+.card__prices {
+  display: flex;
+  margin-bottom: 10px;
+  flex: 0 0 50%; /* Размещаем цены равномерно в две колонки */
+}
+
+.card__price::after {
+  content: "";
+  margin-left: 4px;
+  position: relative;
+}
+
+.card__price1--discount {
+  font-weight: 700;
+  font-size: 19px;
+  color: #414141;
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+.card__price1--discount::before {
+  content: "";
+  font-weight: 400;
+  font-size: 13px;
+  color: #bfbfbf;
+}
+
+.card__price1--common {
+  font-weight: 400;
+  font-size: 17px;
+  color: #606060;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: flex-end;
+}
+
+.card__price1--common::before {
+  content: "";
+  font-weight: 400;
+  font-size: 13px;
+  color: #bfbfbf;
+}
+
+.card__title {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 150%;
+  color: #414141;
+}
+
+.card__title:hover {
+  color: #ff6633;
+}
+
+.card__add {
+  display: block;
+  width: 100%;
+  font-weight: 400;
+  font-size: 17px;
+  color: #70c05b;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #70c05b;
+  border-radius: 4px;
+  cursor: pointer; /* Меняем курсор при наведении */
+  transition: 0.2s;
+  margin-top: auto; /* Прижимаем кнопку к низу карточки */
+}
+
+.card__add:hover {
+  border: 1px solid #ff6633;
+  background-color: #ff6633;
+  color: #fff;
+}
+.cards {
+  display: grid;
+  /* Автоматически заполняем на всю ширину grid-контейнера */
+  grid-template-columns: repeat(auto-fill, 225px);
+  width: 100%;
+  max-width: 1000px; /* Ширина grid-контейнера */
+  justify-content: center;
+  justify-items: center; /* Размещаем карточку по центру */
+  column-gap: 30px; /* Отступ между колонками */
+  row-gap: 40px; /* Отступ между рядами */
+  margin: 0 auto;
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>Тепло души</h2>
+
+        <img src="  https://clipart-library.com/image_gallery/n1356122.png" alt="  Клубок " class="logo">
+        <nav>
+ <ul>
+                <li><a href="file:///C:/Users/%D0%A1%D0%BD%D0%B5%D0%B6%D0%B0%D0%BD%D0%B0/Desktop/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F.Html">Главная</a></li>
+                <li><a href="file:///C:/Users/%D0%A1%D0%BD%D0%B5%D0%B6%D0%B0%D0%BD%D0%B0/Desktop/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3%20%D1%82%D0%BE%D0%B2%D0%B0%D1%80%D0%BE%D0%B2.html">Каталог товаров </a></li>
+                 
+              <li><a href="file:///C:/Users/%D0%A1%D0%BD%D0%B5%D0%B6%D0%B0%D0%BD%D0%B0/Desktop/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/%D0%A1%D1%82%D0%BE%D0%BB%20%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%D0%BE%D0%B2.html">Стол заказов</a></li>
+              <li><a href="file:///C:/Users/%D0%A1%D0%BD%D0%B5%D0%B6%D0%B0%D0%BD%D0%B0/Desktop/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/%D0%BE%D0%B1%D0%BE%20%D0%BC%D0%BD%D0%B5.html">Обо мне </a></li>
+ 
+              
+        </nav>
+    </header>
+    </header>
+     <p>Вяза́ние — процесс изготовления полотна или изделий (обычно элементов одежды или предметов интерьера) из одной или нескольких нитей путём изгибания их в петли и переплетания петель друг с другом с помощью несложных инструментов — вручную (вязальные крючок, спицы, игла, вилка, либо просто руками или на пальцах) или на вязальной машине (механическое вязание).</p>
+  <P>Вязание, как технику, относят к видам плетения, применяют для изготовления предметов одежды (носки, перчатки, шапки) и белья (салфетки, скатерти, занавески), декорирования интерьера.</P>
+<P> Благодаря вязанию создаются петли. Они могут быть сделаны из любого вида пряжи, которые идут друг за другом рядком. Связанное изделие состоит из определённого количества рядков из соединенных петель, переплетающихся с последующим и предыдущим рядами.</p>
+
+     <marquee scrollamount="10">
+<a href="URL статьи №1"><img src="https://i.pinimg.com/originals/60/a0/8e/60a08efcf4ae35103ef3f6be590971bd.jpg "  /></a>
+<a href="URL статьи №2"><img src="https://i.pinimg.com/originals/83/4b/31/834b314e380b6cffd1fb6c04dcd74cd1.jpg " /></a>
+<a href="URL статьи №3"><img src="https://mykaleidoscope.ru/x/uploads/posts/2022-10/thumbs/1666131163_38-mykaleidoscope-ru-p-vyazanie-izdeliya-zhenskie-krasivo-42.jpg " /></a>
+<a href="URL статьи №"4><img  src="https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666131179_48-mykaleidoscope-ru-p-vyazanie-izdeliya-zhenskie-krasivo-52.jpg  " /></a>
+<a href="URL статьи №5"2><img src=" https://i.pinimg.com/originals/9c/1e/bb/9c1ebb39e9cae383f4ecf5fdeccdc833.jpg "  /></a></marquee>
+
+ 
+     
+</body>
+</html>
+
+
